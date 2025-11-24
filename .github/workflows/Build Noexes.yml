@@ -21,24 +21,28 @@ jobs:
     - name: Prepare release structure
       run: |
         cp noexs.nsp release_files/atmosphere/contents/054e4f4558454000/exefs.nsp
-        
+       
+    - name: Get version from tag
+      id: get_version
+      run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+      
     - name: Create release archive
       run: |
         cd release_files
-        zip -r ../noexes-sysmodule.zip atmosphere/
+        zip -r ../noexes-sysmodule-${{ steps.get_version.outputs.VERSION }}.zip atmosphere/
         cd ..
         
     - name: Upload build artifact
       uses: actions/upload-artifact@v4
       with:
-        name: noexes-sysmodule
-        path: noexes-sysmodule.zip
+        name: noexes-sysmodule-${{ steps.get_version.outputs.VERSION }}
+        path: noexes-sysmodule-${{ steps.get_version.outputs.VERSION }}.zip
         
     - name: Create Release
       if: startsWith(github.ref, 'refs/tags/')
       uses: softprops/action-gh-release@v1
       with:
-        files: noexes-sysmodule.zip
+        files: noexes-sysmodule-${{ steps.get_version.outputs.VERSION }}.zip
         draft: false
         prerelease: false
       env:
