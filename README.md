@@ -6,7 +6,7 @@ If you do not use any app that make use of dmnt this fork does not enhance the f
 
 This fork is required for some features of pointersearcher SE. 
 
-To install the sysmodule copy the content of 054e4f4558454000.zip to contents directory of atmosphere.
+To install the sysmodule copy the content of 054e4f4558454000_21.zip to root of the SD card.
 If you have 0100000000000038 from older version you must remove it for the new version to work.
 
 ## License
