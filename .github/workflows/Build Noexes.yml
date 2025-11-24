@@ -20,7 +20,7 @@ jobs:
       
     - name: Prepare release structure
       run: |
-        cp noexes.nsp release_files/atmosphere/contents/054e4f4558454000/exefs.nsp
+        cp noexs.nsp release_files/atmosphere/contents/054e4f4558454000/exefs.nsp
         
     - name: Create release archive
       run: |
